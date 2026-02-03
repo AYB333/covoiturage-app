@@ -47,4 +47,14 @@ router.post("/login", async (req, res) => {
   return res.json({ token });
 });
 
+
+// Protected route example
+import authMiddleware from "../middleware/auth.middleware.js";
+router.get("/me", authMiddleware, (req, res) => {
+  res.json({
+    message: "Access granted",
+    user: req.user
+  });
+});
+
 export default router;
